@@ -4,25 +4,26 @@ import About from './components/About';
 import Login from './components/Login';
 import Home from './components/Home';
 import Navbar from './components/Navbar'; 
-import TransactionsManager from './components/TransactionsManager'; // ייבוא הקומפוננטה הכללית לניהול טרנזקציות
+import TransactionsManager from './components/TransactionsManager'; 
 import Register from './components/Register';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // ניהול מצב ההתחברות
+    const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
     return (
         <Router>
-            {/* הצגת Navbar בכל המסכים */}
             <Navbar />
             <Routes>
                 <Route path="/" element={<About />} />
                 <Route path="/register" element={<Register />} />
 
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+
                 <Route
                     path="/home"
                     element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
                 />
+
                 <Route
                     path="/incomes"
                     element={
