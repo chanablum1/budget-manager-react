@@ -44,7 +44,6 @@ function Home() {
 
       setSummary(response.data)
       renderChart(response.data)
-      // קריאה לפונקציה של שליחת האימייל אם התנאים מתקיימים
       if (response.data.balance < -0) {
         await sendMonthlyEmail(authToken, month)
       }
@@ -53,7 +52,6 @@ function Home() {
     }
   }
 
-  // פונקציה לשליחת האימייל
   const sendMonthlyEmail = async (authToken, selectedMonth) => {
     try {
       await axios.get(

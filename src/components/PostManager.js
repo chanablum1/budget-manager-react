@@ -77,7 +77,6 @@ function PostManager() {
     <div className="container mt-5">
       <h1 className="text-center mb-4">🌟 Forum</h1>
       
-      {/* טופס להוספת פוסט חדש */}
       <div className="card shadow-sm mb-5">
         <div className="card-body">
           <h3 className="card-title">Create a New Post</h3>
@@ -120,7 +119,6 @@ function PostManager() {
         </div>
       </div>
 
-      {/* רשימת פוסטים */}
       <div>
         <h3>Community Posts</h3>
         {posts.length === 0 ? (

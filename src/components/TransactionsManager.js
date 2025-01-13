@@ -136,7 +136,8 @@ function TransactionsManager({ transactionType }) {
           setShowModal(true);
         }}
       >
-        {transactionType === "income" ? "הוסף הכנסה" : "הוסף הוצאה"}
+        <i className={`fas ${transactionType === "income" ? "fa-plus-circle" : "fa-minus-circle"}`}></i>
+        {transactionType === "income" ? " הוסף הכנסה" : " הוסף הוצאה"}
       </Button>
       <table className="table table-striped">
         <thead>
