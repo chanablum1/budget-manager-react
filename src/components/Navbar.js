@@ -49,6 +49,11 @@ function Navbar() {
                 אודות
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/postmanager">
+                פורום משתמשים
+              </Link>
+            </li>
           </ul>
           <button
             id="logout-btn"

@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar'; 
 import TransactionsManager from './components/TransactionsManager'; 
 import Register from './components/Register';
+import PostManager from './components/PostManager';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false); 
@@ -44,6 +45,8 @@ function App() {
                         )
                     }
                 />
+                <Route path="/postmanager" element={<PostManager />} />
+
             </Routes>
         </Router>
     );
