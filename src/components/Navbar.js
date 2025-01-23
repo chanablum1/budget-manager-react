@@ -11,7 +11,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" dir="rtl">
       <div className="container">
         <Link className="navbar-brand" to="/">
           ניהול תקציב
@@ -28,6 +28,8 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav ms-auto"> {/* ms-auto מצמיד את האלמנטים לצד ימין */}
+
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/home">
@@ -55,6 +57,8 @@ function Navbar() {
               </Link>
             </li>
           </ul>
+          </ul>
+
           <button
             id="logout-btn"
             className="btn btn-danger logout-btn"
