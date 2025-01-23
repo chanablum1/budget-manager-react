@@ -48,7 +48,7 @@
 }
 
 .about-page {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   color: #333;
 }
 
@@ -106,37 +106,36 @@
   margin-bottom: 10px;
 }
 
-
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f8f9fa;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
 }
 
 .login-card {
-    background: white;
-    border-radius: 10px;
-    padding: 40px;
-    max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .login-card h1 {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .login-card p {
-    font-size: 14px;
-    margin: 10px 0;
+  font-size: 14px;
+  margin: 10px 0;
 }
 
 .btn-block {
-    width: 100%;
+  width: 100%;
 }
 
 /* login.css */
@@ -226,4 +225,351 @@
 .btn-outline-primary:hover {
   background-color: #007bff;
   color: white;
+}
+
+/* home */
+
+/* סידור כללי של העמוד */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly; /* פיזור אחיד בין האלמנטים */
+  height: 100vh; /* התאמה לגובה העמוד */
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 5px; /* צמצום רווח */
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px; /* רווח קטן יותר בין הכפתורים */
+  margin-bottom: 10px; /* צמצום רווח נוסף */
+}
+
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  flex-grow: 1; /* שימוש בשטח פנוי */
+}
+
+.summary-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summary-section h3 {
+  margin-bottom: 10px; /* ריווח קטן יותר */
+}
+
+.chart-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 250px; /* התאמה לגובה מוגדר */
+}
+
+#summaryChart {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+
+.summary-section label {
+  display: block;
+  margin-bottom: 5px; /* רווח קטן בין הלייבל לשדה הבחירה */
+}
+
+.summary-section input#monthSelect {
+  margin-bottom: 0; /* ביטול המרווח התחתון של האינפוט */
+  display: inline-block; /* סידור בשורה עם הכפתור */
+  width: calc(70% - 5px); /* גודל מותאם */
+}
+
+.summary-section .btn-primary {
+  margin-top: 0; /* ביטול הרווח העליון */
+  margin-left: 5px; /* ריווח קטן מימין לשדה הבחירה */
+  vertical-align: middle; /* יישור אנכי עם האינפוט */
+}
+
+/* /חדש */
+
+.summary-section {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.summary-section h3 {
+  font-size: 1.5rem;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.summary-section div {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.summary-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.summary-section .form-control {
+  display: inline-block;
+  width: 65%;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+
+.summary-section .btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.summary-section .btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80);
+  transform: translateY(-2px);
+}
+
+.summary-section .btn-primary:active {
+  transform: translateY(0);
+}
+
+.home-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #007bff, #6610f2);
+  color: transparent; /* כדי להפוך את הטקסט לשקוף */
+  background-clip: text;
+  -webkit-background-clip: text; /* תמיכה לדפדפני WebKit */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* קובץ CSS מסודר ומעודכן */
+
+/* סידור כללי של העמוד */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly; /* פיזור אחיד בין האלמנטים */
+  height: 100vh; /* התאמה לגובה העמוד */
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+/* כותרת העמוד */
+.home-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #007bff, #6610f2);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text; /* תמיכה לדפדפני WebKit */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+/* כפתורים */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+/* סידור התוכן המרכזי */
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  flex-grow: 1;
+  gap: 10px; /* רווח בין האלמנטים */
+}
+
+/* סיכום */
+.summary-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px; /* גובה מינימום */
+  max-height: 250px; /* גובה מקסימלי */
+}
+
+.summary-section h3 {
+  font-size: 1.5rem;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.summary-section div {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.summary-section label {
+  font-weight: bold;
+  color: #007bff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.summary-section .form-control {
+  display: inline-block;
+  width: 65%;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+
+.summary-section .btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.summary-section .btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80);
+  transform: translateY(-2px);
+}
+
+/* גרף */
+.chart-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; /* גובה מינימום */
+  max-height: 250px; /* גובה מקסימלי */
+}
+
+#summaryChart {
+  width: 100%;
+  height: 100%;
+}
+
+/* עיצוב footer */
+.home-footer {
+   color: rgb(77, 61, 129);
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: auto; /* דוחף את ה-footer לתחתית */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links a {
+  color: #8b3cd5;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-credit a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
+}
+
+/* עדכון הגדרות הטבלאות */
+.summary-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 20px; /* ריווח פנימי נוח יותר */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px; /* גובה מינימום */
+  max-height: 500px; /* גובה מקסימלי */
+  flex-grow: 1; /* השתמש בגובה פנוי */
+}
+
+.chart-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px; /* גובה מינימום */
+  max-height: 500px; /* גובה מקסימלי */
+  flex-grow: 1; /* השתמש בגובה פנוי */
 }

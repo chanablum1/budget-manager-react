@@ -10,7 +10,7 @@ function Home() {
     balance: 0,
   })
   const [chart, setChart] = useState(null)
-  const [month, setMonth] = useState(new Date().toISOString().slice(0, 7)) // ברירת מחדל: החודש הנוכחי
+  const [month, setMonth] = useState(new Date().toISOString().slice(0, 7))
   const username = localStorage.getItem("username")
   const navigate = useNavigate()
 
@@ -22,7 +22,6 @@ function Home() {
 
   const checkLoginStatus = () => {
     const authToken = localStorage.getItem("authToken")
-
     if (!authToken) {
       alert("Please log in first.")
       navigate("/login")
@@ -44,37 +43,13 @@ function Home() {
 
       setSummary(response.data)
       renderChart(response.data)
-      if (response.data.balance < -0) {
-        await sendMonthlyEmail(authToken, month)
-      }
     } catch (error) {
       console.error("Error loading summary:", error)
     }
   }
 
-  const sendMonthlyEmail = async (authToken, selectedMonth) => {
-    try {
-      await axios.get(
-        `https://budget-management-system-1fqb.onrender.com/transaction/transactions/monthly_summary_email/?month=${month}`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
-      console.log("Email sent successfully")
-    } catch (error) {
-      console.error(
-        "Error loading summary:",
-        error.response ? error.response.data : error.message
-      )
-    }
-  }
-
   const renderChart = (data) => {
-    if (chart) {
-      chart.destroy()
-    }
+    if (chart) chart.destroy()
 
     const ctx = document.getElementById("summaryChart").getContext("2d")
     const newChart = new Chart(ctx, {
@@ -86,84 +61,93 @@ function Home() {
             label: "סכום",
             data: [data.total_income, data.total_expense, data.balance],
             backgroundColor: ["#28a745", "#dc3545", "#ffc107"],
-            borderColor: ["#28a745", "#dc3545", "#ffc107"],
-            borderWidth: 1,
           },
         ],
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
+        maintainAspectRatio: false,
+        responsive: true,
       },
     })
-
     setChart(newChart)
   }
-
-  const navigateTo = (path) => {
-    navigate(path)
-  }
-
   return (
-    <div className="container mt-5">
-      <div className="d-flex justify-content-between">
-        <div id="user-info">
-          <span>Hello, {username}</span>
-        </div>
-      </div>
-
-      <h1 className="mt-4">סיכום חודשי</h1>
-
-      <div className="mb-3">
+    <div className="home-container">
+      <header className="home-header">
+        <h1>
+          <span>{username}</span>, ברוכים הבאים לניהול התקציב של
+        </h1>
+      </header>
+      <div className="action-buttons">
         <button
-          className="btn btn-success mr-2"
-          onClick={() => navigateTo("/incomes")}
+          className="btn btn-success"
+          onClick={() => navigate("/incomes")}
         >
           <i className="fas fa-plus-circle"></i> הוסף הכנסה
         </button>
         <button
           className="btn btn-danger"
-          onClick={() => navigateTo("/expenses")}
+          onClick={() => navigate("/expenses")}
         >
           <i className="fas fa-minus-circle"></i> הוסף הוצאה
         </button>
       </div>
-
-      <div className="mb-3">
-        <label htmlFor="monthSelect">בחר חודש:</label>
-        <input
-          type="month"
-          className="form-control"
-          id="monthSelect"
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-        />
-        <button className="btn btn-primary mt-2" onClick={loadMonthlySummary}>
-          הצג סיכום
-        </button>
-      </div>
-
-      <div id="summary" className="mb-4">
-        <div className="row">
-          <div className="col-md-4">
-            <h3>:הכנסות</h3>
-            <p id="totalIncome">{summary.total_income.toLocaleString()}</p>
+      <div className="home-content">
+        <div className="summary-section">
+          <h3>סיכום חודשי</h3>
+          <div>💰 הכנסות: {summary.total_income.toLocaleString()} ש"ח</div>
+          <div>💸 הוצאות: {summary.total_expense.toLocaleString()} ש"ח</div>
+          <div>
+            ⚖️ יתרה:{" "}
+            <span
+              style={{ color: summary.balance >= 0 ? "#ffc107" : "#dc3545" }}
+            >
+              {summary.balance.toLocaleString()}
+            </span>{" "}
+            ש"ח
           </div>
-          <div className="col-md-4">
-            <h3>:הוצאות</h3>
-            <p id="totalExpense">{summary.total_expense.toLocaleString()}</p>
-          </div>
-          <div className="col-md-4">
-            <h3>:יתרה</h3>
-            <p id="balance">{summary.balance.toLocaleString()}</p>
+          <label htmlFor="monthSelect">בחר חודש:</label>
+          <div>
+            <input
+              type="month"
+              className="form-control"
+              id="monthSelect"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            />
+            <button className="btn btn-primary" onClick={loadMonthlySummary}>
+              הצג סיכום
+            </button>
           </div>
         </div>
-      </div>
 
-      <canvas id="summaryChart" width="400" height="200"></canvas>
+        <div className="chart-section">
+          <canvas id="summaryChart"></canvas>
+        </div>
+      </div>
+      <footer className="home-footer">
+        <div className="footer-content">
+          <p>
+            © {new Date().getFullYear()} מערכת ניהול התקציב האישי | כל הזכויות
+            שמורות
+          </p>
+          <p>
+            Developed by{" "}
+            <a
+              href="https://github.com/chanablum1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chana Blum
+            </a>
+          </p>
+
+          {/* <div className="footer-links">
+            <a href="/">אודות</a> | <a href="/contact">צור קשר</a> |{" "}
+            <a href="/terms">תנאי שימוש</a>
+          </div> */}
+        </div>
+      </footer>
     </div>
   )
 }
